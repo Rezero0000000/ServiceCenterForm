@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/src/style.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen flex items-center justify-center p-6">
+  <div class="w-full max-w-5xl bg-white shadow-xl rounded-2xl p-8 border border-gray-200">
+    <header class="text-center mb-8">
+      <h1 class="text-2xl md:text-3xl font-bold text-gray-800 tracking-wide">Service Report Maintenance And Repair</h1>
+      <p class="text-gray-500 text-sm">Formulir untuk pencatatan perawatan & perbaikan</p>
+    </header>
+
+    <form id="myForm" class="space-y-8"
+      action="https://script.google.com/macros/s/AKfycby_3jzivGwbU4qKFkhgEDl568cCtqVL9FIbij_CYK2X1t-k0H8VQHUwvNZ0xlgR77hF/exec"
+      method="POST"
+      target="hidden_iframe"
+      onsubmit="return handleSubmit()">
+
+      <!-- Section 1 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Customer Service Name</label>
+          <input name="cs_name" type="text" class="w-full rounded-lg border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-500 px-3 py-2" placeholder="Nama" />
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Customer Name</label>
+          <input name="customer_name" type="text" class="w-full rounded-lg border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-500 px-3 py-2" placeholder="Nama Customer" />
+        </div>
+      </div>
+
+      <!-- Date / Address / Phone -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Date</label>
+          <input name="date" type="date" class="w-full rounded-lg border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-500 px-3 py-2" />
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Address</label>
+          <input name="address" type="text" class="w-full rounded-lg border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-500 px-3 py-2" placeholder="Alamat" />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="md:col-span-2">
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Phone</label>
+          <input name="phone" type="tel" class="w-full rounded-lg border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-500 px-3 py-2" placeholder="Nomor telepon" />
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Work Order Type</label>
+          <div class="flex items-center gap-6 mt-2">
+            <label class="flex items-center space-x-2"><input type="radio" name="wotype" value="PM" class="text-indigo-600" checked /><span>PM</span></label>
+            <label class="flex items-center space-x-2"><input type="radio" name="wotype" value="CM" class="text-indigo-600" /><span>CM</span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="md:col-span-2">
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Product</label>
+          <input name="product" type="text" class="w-full rounded-lg border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-500 px-3 py-2" placeholder="Nama produk" />
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Product type</label>
+          <input name="product_type" type="text" class="w-full rounded-lg border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-500 px-3 py-2" placeholder="Tipe produk" />
+        </div>
+      </div>
+
+      <!-- Problems -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Problem Reported</label>
+          <textarea name="problem_reported" rows="4" class="w-full rounded-lg border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-500 px-3 py-2" placeholder="Deskripsikan masalah"></textarea>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Problem Found</label>
+          <textarea name="problem_found" rows="4" class="w-full rounded-lg border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-500 px-3 py-2" placeholder="Temuan pemeriksaan"></textarea>
+        </div>
+      </div>
+
+      <!-- Hardware / Software -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-end">
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Problem</label>
+          <div class="flex items-center gap-6">
+            <label class="flex items-center space-x-2"><input type="radio" name="problem_type" value="Hardware" class="text-indigo-600" checked /><span>Hardware</span></label>
+            <label class="flex items-center space-x-2"><input type="radio" name="problem_type" value="Software" class="text-indigo-600" /><span>Software</span></label>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Engineer Name</label>
+          <input name="engineer_name" type="text" class="w-full rounded-lg border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-500 px-3 py-2" placeholder="Nama engineer" />
+        </div>
+
+        <div class="grid grid-cols-3 gap-2">
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1">Action Date</label>
+            <input name="action_date" type="date" class="w-full rounded-lg border-gray-300 shadow-sm px-3 py-2 focus:ring-2 focus:ring-indigo-500" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1">Start</label>
+            <input name="start_time" type="time" class="w-full rounded-lg border-gray-300 shadow-sm px-3 py-2 focus:ring-2 focus:ring-indigo-500" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-1">Stop</label>
+            <input name="stop_time" type="time" class="w-full rounded-lg border-gray-300 shadow-sm px-3 py-2 focus:ring-2 focus:ring-indigo-500" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Taken -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-1">Action Taken</label>
+        <textarea name="action_taken" rows="4" class="w-full rounded-lg border-gray-300 shadow-sm px-3 py-2 focus:ring-2 focus:ring-indigo-500" placeholder="Tuliskan langkah-langkah yang dilakukan"></textarea>
+      </div>
+
+      <!-- Status -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Status after service</label>
+          <div class="flex flex-wrap gap-4 mt-2">
+            <label class="flex items-center space-x-2"><input type="radio" name="status" value="Complete" checked /><span>Complete</span></label>
+            <label class="flex items-center space-x-2"><input type="radio" name="status" value="Incomplete" /><span>Incomplete</span></label>
+            <label class="flex items-center space-x-2"><input type="radio" name="status" value="Pending for parts" /><span>Pending for parts</span></label>
+            <label class="flex items-center space-x-2"><input type="radio" name="status" value="Under Observation" /><span>Under Observation</span></label>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-1">Technician signature</label>
+          <input name="signature" type="text" class="w-full rounded-lg border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-500 px-3 py-2" placeholder="Nama teknisi / tanda tangan" />
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex justify-end gap-4 pt-4 border-t">
+        <button type="reset" class="px-5 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 font-medium">Reset</button>
+        <button type="submit" class="px-5 py-2 rounded-lg bg-indigo-600 text-white font-medium shadow hover:bg-indigo-700">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="notif" id="notif" style="display: none;">
+      ✅ Data berhasil dikirim!
+  </div>
+
+  <iframe name="hidden_iframe" id="hidden_iframe"></iframe>
+
+  <script>
+      function handleSubmit() {
+          setTimeout(() => {
+              document.getElementById('notif').style.display = 'block';
+              document.getElementById('myForm').reset();
+          }, 1000);
+          return true;
+      }
+  </script>
+
+</body>
+</html>
