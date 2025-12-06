@@ -6,6 +6,43 @@
 ```
 function doPost(e) {
   const sheet = SpreadsheetApp.getActiveSheet();
+
+  const header = [
+    "CS Name",
+    "Customer Name",
+    "Date",
+    "Address",
+    "Phone",
+    "WO Type",
+    "Product",
+    "Product Type",
+    "Problem Reported",
+    "Problem Found",
+    "Problem Type",
+    "Engineer Name",
+    "Action Date",
+    "Start Time",
+    "Stop Time",
+    "Action Taken",
+    "Status",
+    "Signature",
+    "Timestamp"
+  ];
+
+  const lastRow = sheet.getLastRow();
+
+  if (lastRow === 0) {
+    sheet.appendRow(header); // buat header di baris 1
+  } else {
+    // cek apakah baris pertama kosong
+    const firstRow = sheet.getRange(1, 1, 1, header.length).getValues()[0];
+    const isHeaderEmpty = firstRow.every(v => v === "");
+    
+    if (isHeaderEmpty) {
+      sheet.getRange(1, 1, 1, header.length).setValues([header]);
+    }
+  }
+
   sheet.appendRow([
     e.parameter.cs_name,
     e.parameter.customer_name,
@@ -30,7 +67,6 @@ function doPost(e) {
 
   return ContentService.createTextOutput("Success");
 }
-
 ```
 
 4. Save
