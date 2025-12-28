@@ -183,9 +183,10 @@
   </div>
 
   <iframe name="hidden_iframe" style="display:none"></iframe>
+<script>
+  function handleSubmit(event) {
+    event.preventDefault(); // ⛔ STOP submit bawaan browser
 
-  <script>
-  function handleSubmit() {
     const form = document.getElementById("myForm");
 
     const requiredFields = [
@@ -202,21 +203,24 @@
 
     for (let name of requiredFields) {
       const field = form.querySelector(`[name="${name}"]`);
+
       if (!field || field.value.trim() === "") {
-        alert("❌ Harap lengkapi semua field yang wajib diisi.");
+        alert("❌ Harap lengkapi semua field sebelum submit!");
         field.focus();
-        return false; 
+        return; // ⛔ TIDAK SUBMIT
       }
     }
+
+    // ✅ KALAU LOLOS VALIDASI → SUBMIT MANUAL
+    form.submit();
 
     setTimeout(() => {
       document.getElementById("notif").classList.remove("hidden");
       form.reset();
     }, 1000);
-
-    return true; 
   }
 </script>
+
 
   <script type="module" src="/src/main.js"></script>
 </body>
