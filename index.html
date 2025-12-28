@@ -185,14 +185,39 @@
   <iframe name="hidden_iframe" style="display:none"></iframe>
 
   <script>
-    function handleSubmit() {
-      setTimeout(() => {
-        document.getElementById("notif").classList.remove("hidden");
-        document.getElementById("myForm").reset();
-      }, 1000);
-      return true;
+  function handleSubmit() {
+    const form = document.getElementById("myForm");
+
+    const requiredFields = [
+      "cs_name",
+      "customer_name",
+      "date",
+      "address",
+      "phone",
+      "product",
+      "engineer_name",
+      "action_taken",
+      "signature"
+    ];
+
+    for (let name of requiredFields) {
+      const field = form.querySelector(`[name="${name}"]`);
+      if (!field || field.value.trim() === "") {
+        alert("❌ Harap lengkapi semua field yang wajib diisi.");
+        field.focus();
+        return false; 
+      }
     }
-  </script>
+
+    setTimeout(() => {
+      document.getElementById("notif").classList.remove("hidden");
+      form.reset();
+    }, 1000);
+
+    return true; 
+  }
+</script>
+
   <script type="module" src="/src/main.js"></script>
 </body>
 </html>
